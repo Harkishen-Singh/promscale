@@ -1139,20 +1139,20 @@ BEGIN
 
         --chunks where the end time is before now()-1 hour will be compressed
         --per-ht compression policy only used for timescale 1.x
-        IF SCHEMA_CATALOG.get_timescale_major_version() < 2 THEN
-            PERFORM add_compress_chunks_policy(format('SCHEMA_DATA.%I', metric_table_name), INTERVAL '1 hour');
-        END IF;
-    ELSE
-        IF SCHEMA_CATALOG.get_timescale_major_version() < 2 THEN
-            PERFORM remove_compress_chunks_policy(format('SCHEMA_DATA.%I', metric_table_name));
-        END IF;
-
-        CALL SCHEMA_CATALOG.decompress_chunks_after(metric_table_name::name, timestamptz '-Infinity', transactional=>true);
-
-        EXECUTE format($$
-            ALTER TABLE SCHEMA_DATA.%I SET (
-                timescaledb.compress = false
-            ); $$, metric_table_name);
+--         IF SCHEMA_CATALOG.get_timescale_major_version() < 2 THEN
+--             PERFORM add_compress_chunks_policy(format('SCHEMA_DATA.%I', metric_table_name), INTERVAL '1 hour');
+--         END IF;
+--     ELSE
+--         IF SCHEMA_CATALOG.get_timescale_major_version() < 2 THEN
+--             PERFORM remove_compress_chunks_policy(format('SCHEMA_DATA.%I', metric_table_name));
+--         END IF;
+--
+--         CALL SCHEMA_CATALOG.decompress_chunks_after(metric_table_name::name, timestamptz '-Infinity', transactional=>true);
+--
+--         EXECUTE format($$
+--             ALTER TABLE SCHEMA_DATA.%I SET (
+--                 timescaledb.compress = false
+--             ); $$, metric_table_name);
     END IF;
 END
 $func$
