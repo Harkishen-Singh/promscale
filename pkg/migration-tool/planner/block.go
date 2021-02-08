@@ -154,12 +154,12 @@ func (b *Block) SetDescription(description string, proceed int) {
 }
 
 // Done updates the text and sets the spinner to done.
-func (b *Block) Done() error {
+func (b *Block) Done(d time.Duration) error {
 	if b.pbarDescriptionPrefix == "" {
 		return nil
 	}
 	b.SetDescription(
-		fmt.Sprintf("pushed %.2f MB. Memory footprint: %.2f MB.", float64(b.numBytesCompressed)/float64(utils.Megabyte), float64(b.numBytesUncompressed)/float64(utils.Megabyte)),
+		fmt.Sprintf("pushed %.2f MB in %s. Memory footprint: %.2f MB.", float64(b.numBytesCompressed)/float64(utils.Megabyte), d.String(), float64(b.numBytesUncompressed)/float64(utils.Megabyte)),
 		1,
 	)
 	b.done = true

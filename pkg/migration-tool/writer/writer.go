@@ -95,6 +95,7 @@ func (rw *RemoteWrite) Run(errChan chan<- error) {
 				blockRef.SetDescription("preparing to push", 1)
 				numSigExpected := shards.scheduleTS(timeseriesRefToTimeseries(blockRef.Series()))
 				blockRef.SetDescription("pushing ...", 1)
+				begin := time.Now()
 				if isErrSig(blockRef, numSigExpected) {
 					return
 				}
@@ -109,7 +110,7 @@ func (rw *RemoteWrite) Run(errChan chan<- error) {
 					}
 				}
 				rw.blocksPushed.Add(1)
-				if err = blockRef.Done(); err != nil {
+				if err = blockRef.Done(time.Since(begin)); err != nil {
 					errChan <- fmt.Errorf("remote-write run: %w", err)
 					return
 				}

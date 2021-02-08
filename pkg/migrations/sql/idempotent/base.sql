@@ -1693,8 +1693,6 @@ $$;
 
 --------------------------------- Views --------------------------------
 
-DROP FUNCTION IF EXISTS SCHEMA_CATALOG.metric_view();
-
 CREATE OR REPLACE FUNCTION SCHEMA_CATALOG.metric_view()
 RETURNS TABLE(id int, metric_name text, table_name name, retention_period interval,
                          chunk_interval interval, label_keys text[], size text, compression_ratio numeric,

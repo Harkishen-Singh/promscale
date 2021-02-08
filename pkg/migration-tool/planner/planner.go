@@ -24,7 +24,7 @@ const numStepsWriter = 5 // Number of progress steps for the progress-bar of the
 var (
 	second                 = time.Second.Milliseconds()
 	minute                 = time.Minute.Milliseconds()
-	laIncrement            = minute
+	laIncrement            = minute * 100
 	maxTimeRangeDeltaLimit = minute * 120
 )
 
