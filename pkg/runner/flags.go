@@ -14,6 +14,7 @@ import (
 	"github.com/peterbourgon/ff/v3/ffyaml"
 	"github.com/timescale/promscale/pkg/api"
 	"github.com/timescale/promscale/pkg/log"
+	mt_config "github.com/timescale/promscale/pkg/multi-tenancy/config"
 	"github.com/timescale/promscale/pkg/pgclient"
 	"github.com/timescale/promscale/pkg/util"
 )
@@ -21,6 +22,7 @@ import (
 type Config struct {
 	ListenAddr                  string
 	PgmodelCfg                  pgclient.Config
+	MultiTenantCfg				mt_config.Config
 	LogCfg                      log.Config
 	APICfg                      api.Config
 	ConfigFile                  string
