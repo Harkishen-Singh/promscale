@@ -17,12 +17,12 @@ import (
 )
 
 const (
-	defaultWriteTimeout  = time.Minute * 5
 	backOffRetryDuration = time.Millisecond * 100
 )
 
 type RemoteWrite struct {
 	c                  context.Context
+	timeout            time.Duration
 	sigSlabRead        chan *planner.Slab
 	url                string
 	shardsSet          *shardsSet
