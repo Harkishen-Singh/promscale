@@ -12,6 +12,7 @@ import (
 	"github.com/prometheus/prometheus/storage"
 	"github.com/prometheus/prometheus/tsdb"
 	"github.com/timescale/promscale/pkg/prompb"
+	"github.com/timescale/promscale/pkg/tests/common"
 )
 
 // generatePrometheusWAL generates Prometheus WAL with exemplars. It returns the path where
@@ -60,7 +61,7 @@ func generatePrometheusWAL(withExemplars bool) ([]prompb.TimeSeries, string, err
 	if withExemplars {
 		tts = generateRecentLargeTimeseries()
 	} else {
-		tts = generateLargeTimeseries()
+		tts = common.GenerateLargeTimeseries()
 	}
 	var copyTts []prompb.TimeSeries
 	if withExemplars {

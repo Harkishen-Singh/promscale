@@ -74,9 +74,11 @@ func prepareContainer(t testing.TB) {
 	require.Equal(t, 0, int(numMetadata))
 }
 
+// terminateContainer terminates an active benchmarkPgContainer container. If the container is not active,
+// it exits silently.
 func terminateContainer() {
 	if !containerActive {
-		log.Fatal("msg", "cannot terminate an inactive container")
+		return
 	}
 	if err := benchmarkPgContainer.Terminate(context.Background()); err != nil {
 		reportAndExit(err)

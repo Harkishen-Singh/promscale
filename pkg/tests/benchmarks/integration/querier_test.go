@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-	"time"
 
 	"github.com/jackc/pgx/v4/pgxpool"
 	"github.com/prometheus/prometheus/pkg/timestamp"
@@ -18,65 +17,7 @@ import (
 	"github.com/timescale/promscale/pkg/pgmodel/cache"
 	"github.com/timescale/promscale/pkg/promql"
 	"github.com/timescale/promscale/pkg/tenancy"
-	"github.com/timescale/promscale/pkg/tests/common"
 )
-
-type testQuery struct {
-	name       string
-	expression string
-	start, end int64
-}
-
-var startTimeOffset = common.StartTime + 24*30*time.Hour.Milliseconds() // start time + 1 month.
-
-var benchmarkableInstantQueries = []testQuery{
-	// Real-world inspired PromQL queries.
-	// References:
-	// 1. https://www.robustperception.io/common-query-patterns-in-promql
-	// 2. https://github.com/infinityworks/prometheus-example-queries
-	{
-		name:       "vs: simple gauge 1",
-		expression: "one_gauge_metric",
-		start:      startTimeOffset,
-		end:        startTimeOffset,
-	},
-	{
-		name:       "vs: simple gauge 2",
-		expression: "two_gauge_metric",
-		start:      startTimeOffset,
-		end:        startTimeOffset,
-	},
-	{
-		name:       "utilization percentage",
-		expression: "100 * (1 - avg by(instance)(irate(one_gauge_metric{foo='bar'}[5m])))",
-		start:      startTimeOffset,
-		end:        startTimeOffset,
-	},
-	{
-		name: "event occurange percentage (like rate of errors)",
-		expression: `
-	rate(one_counter_total[5m]) * 50
-> on(job, instance)
-	rate(two_counter_total[5m])`,
-		start: startTimeOffset,
-		end:   startTimeOffset,
-	},
-	{
-		name:       "percentile calculation 1",
-		expression: `histogram_quantile(0.9, one_histogram_bucket)`,
-		start:      startTimeOffset,
-		end:        startTimeOffset,
-	},
-	{
-		name: "percentile calculation 2",
-		expression: `
-	histogram_quantile(0.9, rate(one_histogram_bucket{job="benchmark"}[10m])) > 0.05
-and
-	rate(one_histogram_count[10m]) > 1`,
-		start: startTimeOffset,
-		end:   startTimeOffset,
-	},
-}
 
 func BenchmarkQuerier(b *testing.B) {
 	startContainer()
@@ -106,6 +47,7 @@ func BenchmarkQuerier(b *testing.B) {
 
 			var result *promql.Result
 			b.Run(q.name, func(b *testing.B) {
+				b.ReportAllocs()
 				result = executable.Exec(context.Background())
 			})
 			fmt.Println("result", result.String())
