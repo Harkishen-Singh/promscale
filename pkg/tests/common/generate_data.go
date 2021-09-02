@@ -22,19 +22,19 @@ const (
 
 var wr prompb.WriteRequest
 
-func GenerateSamples(index, timeDelta int64) []prompb.Sample {
+func GenerateSamples(index, startTime, endTime, timeDelta int64) []prompb.Sample {
 	delta := float64(index * 2)
 	samples := make([]prompb.Sample, 0, 3)
 	i := int64(0)
-	time := StartTime + (timeDelta * i)
+	time := startTime + (timeDelta * i)
 
-	for time < EndTimeLarge {
+	for time < endTime {
 		samples = append(samples, prompb.Sample{
 			Timestamp: time,
 			Value:     delta * float64(i),
 		})
 		i++
-		time = StartTime + (timeDelta * i)
+		time = startTime + (timeDelta * i)
 	}
 
 	return samples
@@ -74,78 +74,89 @@ func GenerateSmallTimeseries() []prompb.TimeSeries {
 	}
 }
 
+var largeSeries = []prompb.TimeSeries{
+	{
+		Labels: []prompb.Label{
+			{Name: "aaa", Value: "000"},
+			{Name: model.MetricNameLabelName, Value: "metric_1"},
+			{Name: "foo", Value: "bar"},
+			{Name: "instance", Value: "1"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "metric_1"},
+			{Name: "foo", Value: "bar"},
+			{Name: "instance", Value: "2"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "metric_1"},
+			{Name: "foo", Value: "bar"},
+			{Name: "instance", Value: "3"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "metric_2"},
+			{Name: "foo", Value: "bat"},
+			{Name: "instance", Value: "1"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "metric_2"},
+			{Name: "foo", Value: "bat"},
+			{Name: "instance", Value: "2"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "metric_2"},
+			{Name: "foo", Value: "bat"},
+			{Name: "instance", Value: "3"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "metric_3"},
+			{Name: "instance", Value: "1"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "metric_3"},
+			{Name: "instance", Value: "2"},
+		},
+	},
+	{
+		Labels: []prompb.Label{
+			{Name: model.MetricNameLabelName, Value: "METRIC_4"},
+			{Name: "foo", Value: "bar"},
+		},
+	},
+}
+
 // GenerateLargeTimeseries generates timeseries used for ingesting into
 // Prometheus and the connector to verify same results are being returned.
 // todo: delete the generateLargeTimeseries()
 func GenerateLargeTimeseries() []prompb.TimeSeries {
-	metrics := []prompb.TimeSeries{
-		{
-			Labels: []prompb.Label{
-				{Name: "aaa", Value: "000"},
-				{Name: model.MetricNameLabelName, Value: "metric_1"},
-				{Name: "foo", Value: "bar"},
-				{Name: "instance", Value: "1"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "metric_1"},
-				{Name: "foo", Value: "bar"},
-				{Name: "instance", Value: "2"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "metric_1"},
-				{Name: "foo", Value: "bar"},
-				{Name: "instance", Value: "3"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "metric_2"},
-				{Name: "foo", Value: "bat"},
-				{Name: "instance", Value: "1"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "metric_2"},
-				{Name: "foo", Value: "bat"},
-				{Name: "instance", Value: "2"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "metric_2"},
-				{Name: "foo", Value: "bat"},
-				{Name: "instance", Value: "3"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "metric_3"},
-				{Name: "instance", Value: "1"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "metric_3"},
-				{Name: "instance", Value: "2"},
-			},
-		},
-		{
-			Labels: []prompb.Label{
-				{Name: model.MetricNameLabelName, Value: "METRIC_4"},
-				{Name: "foo", Value: "bar"},
-			},
-		},
-	}
+	metrics := largeSeries
 
 	for i := range metrics {
-		metrics[i].Samples = GenerateSamples(int64(i+1), 30000)
+		metrics[i].Samples = GenerateSamples(int64(i+1), StartTime, EndTime, 30000)
 	}
 
+	return metrics
+}
+
+func GenerateLargeTimeseriesWithStartandEnd(start, end int64) []prompb.TimeSeries {
+	metrics := largeSeries
+
+	for i := range metrics {
+		metrics[i].Samples = GenerateSamples(int64(i+1), start, end, 3000)
+	}
 	return metrics
 }
 
@@ -309,7 +320,7 @@ func GeneratePromLikeLargeTimeseries() []prompb.TimeSeries {
 	}
 
 	for i := range metrics {
-		metrics[i].Samples = GenerateSamples(int64(i+1), 60000)
+		metrics[i].Samples = GenerateSamples(int64(i+1), StartTime, EndTimeLarge, 60000)
 	}
 
 	return metrics

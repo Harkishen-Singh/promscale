@@ -25,19 +25,26 @@ func BenchmarkIngestorWithEmptyDatabase(b *testing.B) {
 	startContainer()
 	defer terminateContainer()
 
-	ts := common.GenerateLargeTimeseries()
+	// We change the start and end time while generating timeseries for each test
+	// since this allows newer samples to be ingested, avoiding skipping of duplicates.
+	start := int64(1)
+	end := int64(100000000)
+	increment := int64(100000000)
 
 	withDB(b, benchDatabase, func(db *pgxpool.Pool, t testing.TB) {
 		ingestor, err := ingstr.NewPgxIngestorForTests(pgxconn.NewPgxConn(db), nil)
-		if err != nil {
-			t.Fatal(err)
+		require.NoError(t, err)
+		for i := 0; i < 10; i++ {
+			ts := common.GenerateLargeTimeseriesWithStartandEnd(start, end)
+			b.Run(fmt.Sprintf("ingestor with empty database: batch %d", i), func(b *testing.B) {
+				b.ReportAllocs()
+				numInsertables, numMetadata, err := ingestor.Ingest(common.NewWriteRequestWithTs(common.CopyMetrics(ts)))
+				require.NoError(t, err)
+				require.Equal(t, 0, int(numMetadata))
+				require.Equal(t, 300006, int(numInsertables))
+				start += increment
+				end += increment
+			})
 		}
-		b.Run("ingestor with empty database", func(b *testing.B) {
-			b.ReportAllocs()
-			numInsertables, numMetadata, err := ingestor.Ingest(common.NewWriteRequestWithTs(common.CopyMetrics(ts)))
-			require.NoError(b, err)
-			require.Equal(t, 0, int(numMetadata))
-			fmt.Println("numInsertables", numInsertables)
-		})
 	})
 }
