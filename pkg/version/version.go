@@ -39,6 +39,15 @@ var (
 	// the `dev` tag. The SQL migration script name must correspond to the /new/ version.
 	Promscale                           = "0.5.2-dev.1"
 	PromMigrator                        = "0.0.2-beta.1.dev.0"
+	JaegerPluginVersion 				= "0.0.1-dev.0"
+	// CompatibleJaegerPluginVersion is the version that Promscale expects the plugin to have in headers of
+	// the HTTP request. This is important to track, otherwise user might have one version
+	// of plugin, and he is trying to connect with some other version of Promscale.
+	//
+	// Note: This must be an exact semver match.
+	//
+	// In future releases, this will help us be backwards compatible when we extend the plugin versions.
+	CompatibleJaegerPluginVersion		= "0.0.1-dev.0"
 	CommitHash                          = ""
 	EarliestUpgradeTestVersion          = "0.1.0"
 	EarliestUpgradeTestVersionMultinode = "0.1.4" //0.1.4 earliest version that supports tsdb 2.0
