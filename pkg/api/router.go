@@ -75,6 +75,11 @@ func GenerateRouter(apiConf *Config, client *pgclient.Client, elector *util.Elec
 	router.Get("/api/v1/query_range", queryRangeHandler)
 	router.Post("/api/v1/query_range", queryRangeHandler)
 
+	router.Get("/api/v1/report", func(writer http.ResponseWriter, request *http.Request) {
+		fmt.Println("got a ping in report")
+		writer.Write([]byte("success"))
+	})
+
 	seriesHandler := timeHandler(metrics.HTTPRequestDuration, "series", Series(apiConf, queryable))
 	router.Get("/api/v1/series", seriesHandler)
 	router.Post("/api/v1/series", seriesHandler)
