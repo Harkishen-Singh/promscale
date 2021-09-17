@@ -45,6 +45,33 @@ func (p *Plugin) SpanWriter() spanstore.Writer {
 }
 
 func (p *Plugin) GetTrace(ctx context.Context, traceID model.TraceID) (*model.Trace, error) {
+	request := storage_v1.GetTraceRequest{
+		TraceID: traceID,
+	}
+	reqSlice, err := request.Marshal()
+	if err != nil {
+		return nil, wrapErr(api.JaegerQuerySingleTraceEndpoint, fmt.Errorf("marshalling request: %w", err))
+	}
+	req, err := http.NewRequestWithContext(ctx, "POST", p.url+api.JaegerQuerySingleTraceEndpoint, bytes.NewReader(reqSlice))
+	if err != nil {
+		return nil, wrapErr(api.JaegerQuerySingleTraceEndpoint, fmt.Errorf("creating request: %w", err))
+	}
+	applyValidityHeaders(req)
+
+	// todo: reduce the below code's redundancy.
+	resp, err := p.httpClient.Do(req)
+	if err != nil {
+		return nil, wrapErr(api.JaegerQuerySingleTraceEndpoint, fmt.Errorf("fetching response: %w", err))
+	}
+	if err = validateResponse(resp); err != nil {
+		return nil, wrapErr(api.JaegerQuerySingleTraceEndpoint, fmt.Errorf("validate response: %w", err))
+	}
+
+	bSlice, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, wrapErr(api.JaegerQuerySingleTraceEndpoint, fmt.Errorf("reading response body: %w", err))
+	}
+
 	return nil, nil
 }
 
@@ -132,5 +159,6 @@ func (p *Plugin) FindTraceIDs(ctx context.Context, traceQueryParameters *spansto
 }
 
 func (p *Plugin) GetDependencies(ctx context.Context, endTs time.Time, lookback time.Duration) ([]model.DependencyLink, error) {
+	p.logger.Warn("msg", "GetDependencies is yet to be implemented")
 	return nil, nil
 }
