@@ -2,11 +2,11 @@ package api
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"github.com/jaegertracing/jaeger/proto-gen/storage_v1"
 	"net/http"
 	"strconv"
-	"context"
 
 	"github.com/NYTimes/gziphandler"
 	"github.com/jaegertracing/jaeger/model"
