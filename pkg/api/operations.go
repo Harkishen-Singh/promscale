@@ -7,16 +7,17 @@ import (
 	"github.com/jaegertracing/jaeger/proto-gen/storage_v1"
 	"github.com/jaegertracing/jaeger/storage/spanstore"
 	"github.com/timescale/promscale/pkg/log"
+	jaeger_query "github.com/timescale/promscale/pkg/plugin/jaeger-query"
 	"io/ioutil"
 	"net/http"
 )
 
-func Operations(conf *Config, reader spanstore.Reader) http.Handler {
+func Operations(conf *Config, reader *jaeger_query.JaegerQueryReader) http.Handler {
 	hf := corsWrapper(conf, operationsHandler(reader))
 	return gziphandler.GzipHandler(hf)
 }
 
-func operationsHandler(reader spanstore.Reader) http.HandlerFunc {
+func operationsHandler(reader *jaeger_query.JaegerQueryReader) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("operations request")
 		b, err := ioutil.ReadAll(r.Body)
@@ -27,21 +28,16 @@ func operationsHandler(reader spanstore.Reader) http.HandlerFunc {
 		}
 		var request storage_v1.GetOperationsRequest
 		if err = request.Unmarshal(b); err != nil {
-			log.Error("msg", "unmarshalling request: %w", err)
+			log.Error("msg", fmt.Errorf("unmarshalling request: %w", err))
 			respondProtoWithErr(w, http.StatusInternalServerError)
 			return
 		}
-		operations, err := reader.GetOperations(context.Background(), spanstore.OperationQueryParameters{
-			ServiceName: request.Service,
-			SpanKind:    request.SpanKind,
-		})
+		response, err := reader.GetOperations(context.Background(), request)
 		if err != nil {
 			log.Error("msg", fmt.Errorf("get operations: %w", err))
 			respondProtoWithErr(w, http.StatusInternalServerError)
 			return
 		}
-		var response storage_v1.GetOperationsResponse
-		response.Operations = operationsToProtoOperations(operations)
 		b, err = response.Marshal()
 		if err != nil {
 			log.Error("msg", fmt.Errorf("marshal operations: %w", err))

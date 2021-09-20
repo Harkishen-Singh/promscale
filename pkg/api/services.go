@@ -5,17 +5,17 @@ import (
 	"fmt"
 	"github.com/NYTimes/gziphandler"
 	"github.com/jaegertracing/jaeger/proto-gen/storage_v1"
-	"github.com/jaegertracing/jaeger/storage/spanstore"
 	"github.com/timescale/promscale/pkg/log"
+	jaeger_query "github.com/timescale/promscale/pkg/plugin/jaeger-query"
 	"net/http"
 )
 
-func Services(conf *Config, reader spanstore.Reader) http.Handler {
+func Services(conf *Config, reader *jaeger_query.JaegerQueryReader) http.Handler {
 	hf := corsWrapper(conf, servicesHandler(reader))
 	return gziphandler.GzipHandler(hf)
 }
 
-func servicesHandler(reader spanstore.Reader) http.HandlerFunc {
+func servicesHandler(reader *jaeger_query.JaegerQueryReader) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("into services")
 		services, err := reader.GetServices(context.Background())
