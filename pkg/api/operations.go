@@ -21,7 +21,7 @@ func operationsHandler(reader spanstore.Reader) http.HandlerFunc {
 		fmt.Println("operations request")
 		b, err := ioutil.ReadAll(r.Body)
 		if err != nil {
-			log.Error("msg", "reading body: %w", err)
+			log.Error("msg", fmt.Errorf("reading body: %w", err))
 			respondProtoWithErr(w, http.StatusInternalServerError)
 			return
 		}
@@ -36,7 +36,7 @@ func operationsHandler(reader spanstore.Reader) http.HandlerFunc {
 			SpanKind:    request.SpanKind,
 		})
 		if err != nil {
-			log.Error("msg", "get operations: %w", err)
+			log.Error("msg", fmt.Errorf("get operations: %w", err))
 			respondProtoWithErr(w, http.StatusInternalServerError)
 			return
 		}
@@ -44,7 +44,7 @@ func operationsHandler(reader spanstore.Reader) http.HandlerFunc {
 		response.Operations = operationsToProtoOperations(operations)
 		b, err = response.Marshal()
 		if err != nil {
-			log.Error("msg", "marshal operations: %w", err)
+			log.Error("msg", fmt.Errorf("marshal operations: %w", err))
 			respondProtoWithErr(w, http.StatusInternalServerError)
 			return
 		}

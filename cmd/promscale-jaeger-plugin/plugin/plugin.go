@@ -67,7 +67,7 @@ func (p *Plugin) GetTrace(ctx context.Context, traceID model.TraceID) (*model.Tr
 		return nil, wrapErr(api.JaegerQuerySingleTraceEndpoint, fmt.Errorf("validate response: %w", err))
 	}
 
-	bSlice, err := ioutil.ReadAll(resp.Body)
+	_, err = ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, wrapErr(api.JaegerQuerySingleTraceEndpoint, fmt.Errorf("reading response body: %w", err))
 	}

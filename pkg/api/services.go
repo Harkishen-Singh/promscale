@@ -20,13 +20,14 @@ func servicesHandler(reader spanstore.Reader) http.HandlerFunc {
 		fmt.Println("into services")
 		services, err := reader.GetServices(context.Background())
 		if err != nil {
+			log.Error("msg", fmt.Errorf("get services: %w", err))
 			respondError(w, http.StatusInternalServerError, err, "fetching services")
 			return
 		}
 		response := storage_v1.GetServicesResponse{Services: services}
 		bSlice, err := response.Marshal()
 		if err != nil {
-			log.Error("msg", "jaeger plugin: "+err.Error())
+			log.Error("msg", fmt.Errorf("marshal response: %w", err))
 			respondProtoWithErr(w, http.StatusInternalServerError)
 			return
 		}
