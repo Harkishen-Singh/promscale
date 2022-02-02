@@ -6,7 +6,7 @@ require (
 	github.com/NYTimes/gziphandler v1.1.1
 	github.com/blang/semver/v4 v4.0.0
 	github.com/cespare/xxhash/v2 v2.1.2
-	github.com/containerd/cgroups v1.0.2
+	github.com/containerd/cgroups v1.0.3
 	github.com/dekobon/distro-detect v0.0.0-20201122001546-5f5b9c724b9d
 	github.com/docker/go-connections v0.4.0
 	github.com/edsrzf/mmap-go v1.1.0
@@ -17,7 +17,6 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/hashicorp/go-hclog v1.1.0
-	github.com/hashicorp/go-plugin v1.4.3
 	github.com/inhies/go-bytesize v0.0.0-20201103132853-d0aed0d254f8
 	github.com/jackc/pgconn v1.10.1
 	github.com/jackc/pgerrcode v0.0.0-20190803225404-afa3381909a6
