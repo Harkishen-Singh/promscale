@@ -54,8 +54,12 @@ func Write(
 	inserter ingestor.DBInserter,
 	dataParser *parser.DefaultParser,
 	elector *util.Elector,
-	callBack func(code string, durationSeconds, numSamples, numMetadata float64),
+	callBack func(code string, duration float64, received, ingested items),
 ) http.Handler {
+	if callBack == nil {
+		// To handle sending nil in E2E tests.
+		callBack = func(code string, duration float64, received, ingested items) {}
+	}
 	wh := writeHandler{}
 	wh.addStages(
 		validateWriteHeaders,
@@ -234,19 +238,27 @@ var decodedBufPool = sync.Pool{
 func ingest(
 	inserter ingestor.DBInserter,
 	dataParser *parser.DefaultParser,
-	updateMetrics func(code string, durationSeconds, numSamples, numMetadata float64),
+	updateMetrics func(code string, durationSeconds float64, received, ingested items),
 ) func(http.ResponseWriter, *http.Request) bool {
 	return func(w http.ResponseWriter, r *http.Request) bool {
 		begin := time.Now()
 		statusCode := "400"
 		numSamples := uint64(0)
 		numMetadata := uint64(0)
-		defer func() {
-			updateMetrics(statusCode, time.Since(begin).Seconds(), float64(numSamples), float64(numMetadata))
-		}()
 		ctx, span := tracer.Default().Start(r.Context(), "ingest")
 		defer span.End()
 		req := ingestor.NewWriteRequest()
+		// set number of received samples and metadata in case below Ingest fails
+		numSamplesReceived := uint64(getTotalSamples(req))
+		numMetadataReceived := uint64(len(req.Metadata))
+		defer func() {
+			updateMetrics(
+				statusCode,
+				time.Since(begin).Seconds(),
+				items{float64(numSamplesReceived), float64(numMetadataReceived)},
+				items{float64(numSamples), float64(numMetadata)},
+			)
+		}()
 		err := dataParser.ParseRequest(r, req)
 		if err != nil {
 			ingestor.FinishWriteRequest(req)
@@ -262,14 +274,8 @@ func ingest(
 			return false
 		}
 
-		// set number of received samples and metadata in case below Ingest fails
-		numSamplesTmp := uint64(getTotalSamples(req))
-		numMetadataTmp := uint64(len(req.Metadata))
-
 		numSamples, numMetadata, err = inserter.Ingest(ctx, req)
 		if err != nil {
-			numSamples = numSamplesTmp
-			numMetadata = numMetadataTmp
 			statusCode = "500"
 			log.Warn("msg", "Error sending samples to remote storage", "err", err, "num_samples", numSamples)
 			http.Error(w, err.Error(), http.StatusInternalServerError)

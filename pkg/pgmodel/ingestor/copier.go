@@ -446,8 +446,6 @@ func insertSeries(ctx context.Context, conn pgxconn.PgxConn, reqs ...copyRequest
 			registerDuplicates(numRowsExpected - insertedRows)
 		}
 	}
-	metrics.IngestorInsertablesIngested.With(prometheus.Labels{"type": "metric", "kind": "sample"}).Add(float64(totalSamples))
-	metrics.IngestorInsertablesIngested.With(prometheus.Labels{"type": "metric", "kind": "exemplar"}).Add(float64(totalExemplars))
 
 	var val []byte
 	row := results.QueryRow()

@@ -406,13 +406,13 @@ func (m *mockMetric) SetToCurrentTime() {
 	panic("implement me")
 }
 
-func mockUpdaterForIngest(counter, histogram, numSamples, numMetadata *mockMetric) func(code string, duration, numSamples, numMetadata float64) {
-	return func(_ string, duration, samples, metadata float64) {
+func mockUpdaterForIngest(counter, histogram, numSamples, numMetadata *mockMetric) func(code string, duration float64, received, ingested items) {
+	return func(_ string, duration float64, _, ingested items) {
 		counter.value++
-		applyValueIfMetricNotNil(counter, samples)
+		applyValueIfMetricNotNil(counter, ingested.samples)
 		applyValueIfMetricNotNil(histogram, duration)
-		applyValueIfMetricNotNil(numSamples, samples)
-		applyValueIfMetricNotNil(numMetadata, metadata)
+		applyValueIfMetricNotNil(numSamples, ingested.samples)
+		applyValueIfMetricNotNil(numMetadata, ingested.metadata)
 	}
 }
 
