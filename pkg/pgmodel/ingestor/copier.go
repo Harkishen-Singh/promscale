@@ -7,6 +7,7 @@ package ingestor
 import (
 	"context"
 	"fmt"
+	"github.com/timescale/promscale/pkg/util"
 	"math"
 	"sort"
 	"strings"
@@ -483,14 +484,30 @@ func insertMetadata(conn pgxconn.PgxConn, reqs []pgmodel.Metadata) (insertedRows
 	return insertedRows, nil
 }
 
-var copierChannelMutex sync.Mutex
+var (
+	copierChannelMutex            sync.Mutex
+	samplesCopierChannelToMonitor chan readRequest
+	// Declare and register here since we need readRequest struct which should not be defined in
+	// pgmodel/metric.
+	ingestorChannelLenCopier = prometheus.NewGaugeFunc(
+		prometheus.GaugeOpts{
+			Namespace:   util.PromNamespace,
+			Subsystem:   "ingest",
+			Name:        "channel_len",
+			Help:        "Length of the ingestor channel.",
+			ConstLabels: map[string]string{"type": "metric", "subsystem": "copier", "kind": "sample"},
+		}, func() float64 { return float64(len(samplesCopierChannelToMonitor)) },
+	)
+)
+
+func init() {
+	prometheus.MustRegister(ingestorChannelLenCopier)
+}
 
 func setCopierChannelToMonitor(toSamplesCopiers chan readRequest) {
 	copierChannelMutex.Lock()
 	defer copierChannelMutex.Unlock()
 
 	metrics.IngestorChannelCap.With(prometheus.Labels{"type": "metric", "subsystem": "copier", "kind": "sample"}).Set(float64(cap(toSamplesCopiers)))
-	metrics.SampleCopierChannelLengthFunc = func() float64 {
-		return float64(len(toSamplesCopiers))
-	}
+	samplesCopierChannelToMonitor = toSamplesCopiers
 }

@@ -62,24 +62,14 @@ var (
 			Help:      "Capacity of the ingest channel.",
 		}, []string{"type", "subsystem", "kind"},
 	)
-	IngestorChannelLen = prometheus.NewHistogramVec(
-		prometheus.HistogramOpts{
-			Namespace: util.PromNamespace,
-			Subsystem: "ingest",
-			Name:      "channel_len",
-			Help:      "Length of the ingestor channel.",
-			Buckets:   util.HistogramBucketsSaturating(0, 2, MetricBatcherChannelCap),
-		}, []string{"type", "subsystem", "kind"},
-	)
-	SampleCopierChannelLengthFunc func() float64
-	IngestorChannelLenCopier      = prometheus.NewGaugeFunc(
+	IngestorChannelLenBatcher = prometheus.NewGauge(
 		prometheus.GaugeOpts{
 			Namespace:   util.PromNamespace,
 			Subsystem:   "ingest",
 			Name:        "channel_len",
 			Help:        "Length of the ingestor channel.",
-			ConstLabels: map[string]string{"type": "metric", "subsystem": "copier", "kind": "sample"},
-		}, SampleCopierChannelLengthFunc,
+			ConstLabels: map[string]string{"type": "metric", "subsystem": "metric_batcher", "kind": "sample"},
+		},
 	)
 	IngestorFlushSeries = prometheus.NewHistogramVec(
 		prometheus.HistogramOpts{
@@ -187,7 +177,7 @@ func init() {
 		IngestorDecompressEarliest,
 		IngestorMaxSentTimestamp,
 		IngestorChannelCap,
-		IngestorChannelLen,
+		IngestorChannelLenBatcher,
 		IngestorFlushSeries,
 		IngestorInsertsPerBatch,
 		IngestorRowsPerBatch,

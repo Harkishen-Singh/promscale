@@ -296,7 +296,7 @@ func (p *pgxDispatcher) getMetricBatcher(metric string) chan<- *insertDataReques
 		}
 	}
 	ch := batcher.(chan *insertDataRequest)
-	metrics.IngestorChannelLen.With(prometheus.Labels{"type": "metric", "subsystem": "metric_batcher", "kind": "samples"}).Observe(float64(len(ch)))
+	metrics.IngestorChannelLenBatcher.Set(float64(len(ch)))
 	return ch
 }
 
