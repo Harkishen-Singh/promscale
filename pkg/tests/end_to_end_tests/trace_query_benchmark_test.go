@@ -46,9 +46,13 @@ func BenchmarkTraceQueryWithTags(b *testing.B) {
 		promscaleClient := httpClient{"http://" + listener.Addr().String()}
 
 		for _, tc := range traceQueryCases {
-			b.ResetTimer()
-			b.ReportAllocs()
-			getTraces(t, promscaleClient, tc.service, tc.start, tc.end, tc.tag)
+			b.Run(tc.name, func(b *testing.B) {
+				b.ResetTimer()
+				b.ReportAllocs()
+				for i := 0; i < b.N; i++ {
+					getTraces(t, promscaleClient, tc.service, tc.start, tc.end, tc.tag)
+				}
+			})
 		}
 	})
 }

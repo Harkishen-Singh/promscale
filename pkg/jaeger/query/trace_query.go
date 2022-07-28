@@ -6,7 +6,6 @@ package query
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 	"time"
 
@@ -242,16 +241,25 @@ func (b *Builder) buildTraceIDSubquery(q *spanstore.TraceQueryParameters) (strin
 			default:
 				//TODO make sure this is optimized correctly
 				val := "\"" + v + "\""
-				if _, err := strconv.ParseBool(v); err == nil || digitCheck.MatchString(v) {
-					// Do not add double quotes if value is boolean or numeric.
-					val = v
-				}
+				//if _, err := strconv.ParseBool(v); err == nil || digitCheck.MatchString(v) {
+				//	// Do not add double quotes if value is boolean or numeric.
+				//	val = v
+				//}
 				params = append(params, k, val)
+
+				// debug stuff
+				params = append(params, k, v) // Without the quotes.
+				// end debug stuff
+
 				// Note: We do not need to check resource tags in above cases, since they
 				// come from Jaeger conversion that are specific to span_tags.
 				qual := fmt.Sprintf(
-					`(_ps_trace.tag_map_denormalize(s.span_tags)->$%[1]d = $%[2]d OR _ps_trace.tag_map_denormalize(s.resource_tags)->$%[1]d = $%[2]d)`,
-					len(params)-1, len(params))
+					`(
+								(_ps_trace.tag_map_denormalize(s.span_tags)->$%[1]d = $%[2]d OR _ps_trace.tag_map_denormalize(s.resource_tags)->$%[1]d = $%[2]d)
+							OR
+								(_ps_trace.tag_map_denormalize(s.span_tags)->$%[3]d = $%[4]d OR _ps_trace.tag_map_denormalize(s.resource_tags)->$%[3]d = $%[4]d)
+							)`,
+					len(params)-3, len(params)-2, len(params)-1, len(params))
 				clauses = append(clauses, qual)
 			}
 		}

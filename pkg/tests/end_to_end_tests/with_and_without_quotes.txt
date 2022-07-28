@@ -1,0 +1,57 @@
+2022/07/28 19:10:28 Starting container id: 6475620b6532 image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 19:10:29 Waiting for container id 6475620b6532 image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 19:10:29 Container is ready id: 6475620b6532 image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 19:10:29 Starting container id: 0a4d68e2ce17 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 19:10:29 Waiting for container id 0a4d68e2ce17 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 19:10:37 Container is ready id: 0a4d68e2ce17 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 19:10:39 Starting container id: f73ecb27f10c image: prom/prometheus:main
+2022/07/28 19:10:39 Waiting for container id f73ecb27f10c image: prom/prometheus:main
+2022/07/28 19:10:39 Container is ready id: f73ecb27f10c image: prom/prometheus:main
+2022/07/28 19:10:39 Starting container id: 64704c541e81 image: prom/prometheus:main
+2022/07/28 19:10:39 Waiting for container id 64704c541e81 image: prom/prometheus:main
+2022/07/28 19:10:39 Container is ready id: 64704c541e81 image: prom/prometheus:main
+goos: darwin
+goarch: arm64
+pkg: github.com/timescale/promscale/pkg/tests/end_to_end_tests
+BenchmarkTraceQueryWithTags/simple_trace-10         	      55	  22497469 ns/op	  477280 B/op	    7497 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      55	  21880513 ns/op	  482940 B/op	    7499 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      57	  21846351 ns/op	  482009 B/op	    7500 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      54	  21714763 ns/op	  481870 B/op	    7508 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      61	  21984038 ns/op	  480644 B/op	    7501 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      52	  23243700 ns/op	  482488 B/op	    7502 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      60	  21239490 ns/op	  481401 B/op	    7505 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      55	  21755443 ns/op	  477362 B/op	    7504 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      52	  21442357 ns/op	  482026 B/op	    7503 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      56	  21350389 ns/op	  479873 B/op	    7505 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      32	  33672714 ns/op	  486299 B/op	    7529 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      37	  32755291 ns/op	  488357 B/op	    7531 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      32	  33354514 ns/op	  489813 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      36	  33375330 ns/op	  490653 B/op	    7536 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      37	  34251131 ns/op	  489029 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      34	  32753012 ns/op	  487818 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      37	  33830024 ns/op	  488441 B/op	    7541 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      34	  34198919 ns/op	  486242 B/op	    7536 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      33	  32609859 ns/op	  489586 B/op	    7531 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      34	  33286001 ns/op	  488513 B/op	    7537 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      69	  14556743 ns/op	  243408 B/op	    3777 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      84	  14821230 ns/op	  242871 B/op	    3784 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      87	  14624221 ns/op	  243349 B/op	    3781 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      82	  15284882 ns/op	  242476 B/op	    3782 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      76	  14259419 ns/op	  242404 B/op	    3782 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      88	  14450359 ns/op	  243213 B/op	    3782 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      82	  14315846 ns/op	  241944 B/op	    3778 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      82	  14703815 ns/op	  242015 B/op	    3782 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      86	  14239750 ns/op	  241281 B/op	    3777 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      79	  14503133 ns/op	  242739 B/op	    3782 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      37	  32574504 ns/op	  490949 B/op	    7545 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      37	  32663338 ns/op	  488158 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      37	  32756984 ns/op	  490140 B/op	    7542 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      34	  32933108 ns/op	  489399 B/op	    7541 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      34	  33919417 ns/op	  488605 B/op	    7542 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      33	  32496848 ns/op	  487081 B/op	    7525 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      37	  33111079 ns/op	  487256 B/op	    7540 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      38	  34257795 ns/op	  486783 B/op	    7529 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      37	  32818655 ns/op	  491210 B/op	    7538 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      34	  33635045 ns/op	  487824 B/op	    7527 allocs/op
+PASS
+ok  	github.com/timescale/promscale/pkg/tests/end_to_end_tests	70.659s

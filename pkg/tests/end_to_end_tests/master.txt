@@ -1,27 +1,67 @@
-2022/07/28 16:40:58 Starting container id: 191071c3cef6 image: docker.io/testcontainers/ryuk:0.3.3
-2022/07/28 16:40:58 Waiting for container id 191071c3cef6 image: docker.io/testcontainers/ryuk:0.3.3
-2022/07/28 16:40:59 Container is ready id: 191071c3cef6 image: docker.io/testcontainers/ryuk:0.3.3
-2022/07/28 16:40:59 Starting container id: 376781f50a97 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
-2022/07/28 16:40:59 Waiting for container id 376781f50a97 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
-2022/07/28 16:41:07 Container is ready id: 376781f50a97 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
-2022/07/28 16:41:09 Starting container id: b7613ac5b3f6 image: prom/prometheus:main
-2022/07/28 16:41:09 Waiting for container id b7613ac5b3f6 image: prom/prometheus:main
-2022/07/28 16:41:09 Container is ready id: b7613ac5b3f6 image: prom/prometheus:main
-2022/07/28 16:41:09 Starting container id: 683f5f4541b2 image: prom/prometheus:main
-2022/07/28 16:41:10 Waiting for container id 683f5f4541b2 image: prom/prometheus:main
-2022/07/28 16:41:10 Container is ready id: 683f5f4541b2 image: prom/prometheus:main
+2022/07/28 19:02:06 Starting container id: 6ac4f862af2a image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 19:02:06 Waiting for container id 6ac4f862af2a image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 19:02:07 Container is ready id: 6ac4f862af2a image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 19:02:07 Starting container id: b797eaa48758 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 19:02:07 Waiting for container id b797eaa48758 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 19:02:16 Container is ready id: b797eaa48758 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 19:02:17 Starting container id: cfb76738eaf7 image: prom/prometheus:main
+2022/07/28 19:02:17 Waiting for container id cfb76738eaf7 image: prom/prometheus:main
+2022/07/28 19:02:17 Container is ready id: cfb76738eaf7 image: prom/prometheus:main
+2022/07/28 19:02:17 Starting container id: 5dcdf088e4d9 image: prom/prometheus:main
+2022/07/28 19:02:18 Waiting for container id 5dcdf088e4d9 image: prom/prometheus:main
+2022/07/28 19:02:18 Container is ready id: 5dcdf088e4d9 image: prom/prometheus:main
 goos: darwin
 goarch: arm64
 pkg: github.com/timescale/promscale/pkg/tests/end_to_end_tests
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04114 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04635 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04144 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04807 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04039 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04025 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04356 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04264 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04315 ns/op	       0 B/op	       0 allocs/op
-BenchmarkTraceQueryWithTags-10    	1000000000	         0.04121 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      54	  20152946 ns/op	  477447 B/op	    7504 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      54	  21045391 ns/op	  480238 B/op	    7506 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      58	  21398896 ns/op	  480136 B/op	    7504 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      61	  20690442 ns/op	  482155 B/op	    7508 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      62	  21431251 ns/op	  482794 B/op	    7503 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      56	  21647514 ns/op	  479444 B/op	    7503 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      60	  20533211 ns/op	  481202 B/op	    7509 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      56	  20872996 ns/op	  482888 B/op	    7501 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      52	  20446990 ns/op	  482362 B/op	    7498 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace-10         	      56	  21083193 ns/op	  481147 B/op	    7500 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      39	  26790298 ns/op	  491378 B/op	    7533 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      45	  26884140 ns/op	  487289 B/op	    7533 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      48	  27158984 ns/op	  488179 B/op	    7527 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      46	  27866804 ns/op	  489481 B/op	    7532 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      49	  27736556 ns/op	  485720 B/op	    7530 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      44	  27431734 ns/op	  487672 B/op	    7533 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      44	  26554769 ns/op	  486098 B/op	    7537 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      44	  27727466 ns/op	  489854 B/op	    7534 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      43	  28752363 ns/op	  492735 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_numeric_tag-10         	      38	  30655273 ns/op	  489754 B/op	    7534 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      40	  30887693 ns/op	  490342 B/op	    7534 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      39	  30287032 ns/op	  488335 B/op	    7530 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      40	  30755324 ns/op	  487792 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      37	  30130801 ns/op	  491991 B/op	    7532 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      37	  30545961 ns/op	  485771 B/op	    7528 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      43	  30385241 ns/op	  485695 B/op	    7529 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      40	  29459761 ns/op	  489007 B/op	    7531 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      40	  29746826 ns/op	  491305 B/op	    7529 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      40	  30833056 ns/op	  490880 B/op	    7527 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_resource_tag-10        	      38	  29559065 ns/op	  488931 B/op	    7533 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      63	  16101080 ns/op	  242918 B/op	    3780 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      79	  15187549 ns/op	  241455 B/op	    3780 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      84	  15811014 ns/op	  243134 B/op	    3780 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      80	  16005268 ns/op	  242452 B/op	    3780 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      79	  15599248 ns/op	  242381 B/op	    3782 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      78	  16084639 ns/op	  242433 B/op	    3777 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      75	  15708332 ns/op	  243224 B/op	    3781 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      80	  15552578 ns/op	  242901 B/op	    3781 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      74	  15381728 ns/op	  242520 B/op	    3782 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_error_tag-10           	      81	  15176368 ns/op	  241763 B/op	    3783 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      43	  29439644 ns/op	  488494 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      44	  29376193 ns/op	  486213 B/op	    7537 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      44	  28908208 ns/op	  485598 B/op	    7530 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      42	  29234311 ns/op	  487029 B/op	    7535 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      44	  28934491 ns/op	  487169 B/op	    7532 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      44	  28785912 ns/op	  487635 B/op	    7525 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      42	  28833599 ns/op	  486221 B/op	    7528 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      42	  28989490 ns/op	  485174 B/op	    7530 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      43	  29137126 ns/op	  484405 B/op	    7528 allocs/op
+BenchmarkTraceQueryWithTags/simple_trace_with_boolean_tag-10         	      42	  28107767 ns/op	  485710 B/op	    7526 allocs/op
 PASS
-ok  	github.com/timescale/promscale/pkg/tests/end_to_end_tests	471.424s
+ok  	github.com/timescale/promscale/pkg/tests/end_to_end_tests	84.070s
