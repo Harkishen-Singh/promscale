@@ -2,7 +2,6 @@ package end_to_end_tests
 
 import (
 	"context"
-	"fmt"
 	"net"
 	"net/http"
 	"testing"
@@ -47,10 +46,9 @@ func BenchmarkTraceQueryWithTags(b *testing.B) {
 		promscaleClient := httpClient{"http://" + listener.Addr().String()}
 
 		for _, tc := range traceQueryCases {
-			b.Run(fmt.Sprintf("case_%s", tc.name), func(b *testing.B) {
-				b.ReportAllocs()
-				getTraces(t, promscaleClient, tc.service, tc.start, tc.end, tc.tag)
-			})
+			b.ResetTimer()
+			b.ReportAllocs()
+			getTraces(t, promscaleClient, tc.service, tc.start, tc.end, tc.tag)
 		}
 	})
 }

@@ -1,0 +1,27 @@
+2022/07/28 16:40:58 Starting container id: 191071c3cef6 image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 16:40:58 Waiting for container id 191071c3cef6 image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 16:40:59 Container is ready id: 191071c3cef6 image: docker.io/testcontainers/ryuk:0.3.3
+2022/07/28 16:40:59 Starting container id: 376781f50a97 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 16:40:59 Waiting for container id 376781f50a97 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 16:41:07 Container is ready id: 376781f50a97 image: ghcr.io/timescale/dev_promscale_extension:0.5.4-ts2-pg14
+2022/07/28 16:41:09 Starting container id: b7613ac5b3f6 image: prom/prometheus:main
+2022/07/28 16:41:09 Waiting for container id b7613ac5b3f6 image: prom/prometheus:main
+2022/07/28 16:41:09 Container is ready id: b7613ac5b3f6 image: prom/prometheus:main
+2022/07/28 16:41:09 Starting container id: 683f5f4541b2 image: prom/prometheus:main
+2022/07/28 16:41:10 Waiting for container id 683f5f4541b2 image: prom/prometheus:main
+2022/07/28 16:41:10 Container is ready id: 683f5f4541b2 image: prom/prometheus:main
+goos: darwin
+goarch: arm64
+pkg: github.com/timescale/promscale/pkg/tests/end_to_end_tests
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04114 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04635 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04144 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04807 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04039 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04025 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04356 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04264 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04315 ns/op	       0 B/op	       0 allocs/op
+BenchmarkTraceQueryWithTags-10    	1000000000	         0.04121 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/timescale/promscale/pkg/tests/end_to_end_tests	471.424s
