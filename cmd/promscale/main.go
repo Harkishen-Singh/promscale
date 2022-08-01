@@ -6,15 +6,17 @@ package main
 
 import (
 	"fmt"
-	"os"
-
+	"github.com/pkg/profile"
 	"github.com/timescale/promscale/pkg/log"
 	"github.com/timescale/promscale/pkg/runner"
 	"github.com/timescale/promscale/pkg/version"
 	_ "go.uber.org/automaxprocs"
+	"os"
+	"time"
 )
 
 func main() {
+	defer profile.Start(profile.MemProfile, profile.MemProfileRate(10)).Stop()
 	log.InitDefault()
 	args := os.Args[1:]
 	if shouldProceed := runner.ParseArgs(args); !shouldProceed {
@@ -31,7 +33,11 @@ func main() {
 		fmt.Println(version.Info())
 		log.Fatal("msg", "cannot start logger", "err", err)
 	}
-	err = runner.Run(cfg)
+	go func() {
+		err = runner.Run(cfg)
+	}()
+	time.Sleep(time.Second * 10)
+	return
 	if err != nil {
 		os.Exit(1)
 	}

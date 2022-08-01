@@ -20,7 +20,7 @@ type Cache struct {
 	// least a read-lock to access, and a write-lock to insert/update/delete.
 	elementsLock sync.RWMutex
 	// stores indexes into storage
-	elements map[interface{}]*element
+	elements map[interface{}]int
 	storage  []element
 	// Information elements:
 	// size of everything stored by storage, does not include size of the cache structure itself
@@ -51,7 +51,7 @@ type element struct {
 func WithMax(max uint64) *Cache {
 	return &Cache{
 		metrics:  &perfMetrics{}, // Unregistered metrics.
-		elements: make(map[interface{}]*element, max),
+		elements: make(map[interface{}]int, max),
 		storage:  make([]element, 0, max),
 	}
 }
@@ -97,38 +97,38 @@ func (self *Cache) InsertBatch(keys []interface{}, values []interface{}, sizesBy
 }
 
 func (self *Cache) insert(key interface{}, value interface{}, size uint64) (existingElement *element, inserted bool, inCache bool) {
-	elem, present := self.elements[key]
+	index, present := self.elements[key]
 	if present {
 		// we'll count a double-insert as a hit. See the comment in get
-		if atomic.LoadUint32(&elem.used) != 0 {
-			atomic.StoreUint32(&elem.used, 1)
+		if atomic.LoadUint32(&self.storage[index].used) != 0 {
+			atomic.StoreUint32(&self.storage[index].used, 1)
 		}
-		return elem, false, true
+		return &self.storage[index], false, true
 	}
 
-	var insertLocation *element
+	var insertPosition int
 	if len(self.storage) >= cap(self.storage) {
-		insertLocation = self.evict()
-		if insertLocation == nil {
+		insertPosition = self.evict()
+		if insertPosition == -1 {
 			return &element{key: key, value: value, size: size}, false, false
 		}
 		self.elementsLock.Lock()
 		defer self.elementsLock.Unlock()
-		delete(self.elements, insertLocation.key)
-		self.dataSize -= insertLocation.size
+		delete(self.elements, self.storage[insertPosition].key)
+		self.dataSize -= self.storage[insertPosition].size
 		self.dataSize += size
 		self.evictions++
-		*insertLocation = element{key: key, value: value, size: size}
+		self.storage[insertPosition] = element{key: key, value: value, size: size}
 	} else {
 		self.elementsLock.Lock()
 		defer self.elementsLock.Unlock()
 		self.storage = append(self.storage, element{key: key, value: value, size: size})
 		self.dataSize += size
-		insertLocation = &self.storage[len(self.storage)-1]
+		insertPosition = len(self.storage) - 1
 	}
 
-	self.elements[key] = insertLocation
-	return insertLocation, true, true
+	self.elements[key] = insertPosition
+	return &self.storage[insertPosition], true, true
 }
 
 // Update updates the cache entry at key position with the new value and size. It inserts the key if not found and
@@ -148,7 +148,7 @@ func (self *Cache) Update(key, value interface{}, size uint64) (canonicalValue i
 	return existingElement.value
 }
 
-func (self *Cache) evict() (insertPtr *element) {
+func (self *Cache) evict() (insertPosition int) {
 	// this code goes around storage in a ring searching for the first element
 	// not marked as used, which it will evict. The code has two unusual
 	// features:
@@ -162,30 +162,29 @@ func (self *Cache) evict() (insertPtr *element) {
 	//     if the value is merely guarded by e.g. `if next >= len(slice) { next = 0 }`
 	//     the bounds check will not be elided. Doing the walk like this lowers
 	//     eviction time by about a third
+	insertPosition = -1
 	startLoc := self.next
 	postStart := self.storage[startLoc:]
 	preStart := self.storage[:startLoc]
 	for i := 0; i < 2; i++ {
 		for next := range postStart {
-			elem := &postStart[next]
-			old := atomic.SwapUint32(&elem.used, 0)
+			old := atomic.SwapUint32(&postStart[next].used, 0)
 			if old == 0 {
-				insertPtr = elem
+				insertPosition = next
 			}
 
-			if insertPtr != nil {
+			if insertPosition > -1 {
 				self.next = next + 1
 				return
 			}
 		}
 		for next := range preStart {
-			elem := &preStart[next]
-			old := atomic.SwapUint32(&elem.used, 0)
+			old := atomic.SwapUint32(&preStart[next].used, 0)
 			if old == 0 {
-				insertPtr = elem
+				insertPosition = next
 			}
 
-			if insertPtr != nil {
+			if insertPosition > -1 {
 				self.next = next + 1
 				return
 			}
@@ -242,7 +241,7 @@ func (self *Cache) Get(key interface{}) (interface{}, bool) {
 
 func (self *Cache) get(key interface{}) (interface{}, bool) {
 	self.metrics.Inc(self.metrics.queriesTotal)
-	elem, present := self.elements[key]
+	index, present := self.elements[key]
 	if !present {
 		return 0, false
 	}
@@ -252,19 +251,19 @@ func (self *Cache) get(key interface{}) (interface{}, bool) {
 	// this is a read-only operation, and doesn't trash the cache line that used
 	// is stored on. The lack of atomicity of the update doesn't matter for our
 	// use case.
-	if atomic.LoadUint32(&elem.used) == 0 {
-		atomic.StoreUint32(&elem.used, 1)
+	if atomic.LoadUint32(&self.storage[index].used) == 0 {
+		atomic.StoreUint32(&self.storage[index].used, 1)
 	}
 	self.metrics.Inc(self.metrics.hitsTotal)
 
-	return elem.value, true
+	return self.storage[index].value, true
 }
 
 func (self *Cache) unmark(key string) bool {
 	self.elementsLock.RLock()
 	defer self.elementsLock.RUnlock()
 
-	elem, present := self.elements[key]
+	index, present := self.elements[key]
 	if !present {
 		return false
 	}
@@ -274,8 +273,8 @@ func (self *Cache) unmark(key string) bool {
 	// this is a read-only operation, and doesn't trash the cache line that used
 	// is stored on. The lack of atomicity of the update doesn't matter for our
 	// use case.
-	if atomic.LoadUint32(&elem.used) != 0 {
-		atomic.StoreUint32(&elem.used, 0)
+	if atomic.LoadUint32(&self.storage[index].used) != 0 {
+		atomic.StoreUint32(&self.storage[index].used, 0)
 	}
 
 	return true
@@ -291,21 +290,17 @@ func (self *Cache) ExpandTo(newMax int) {
 	}
 
 	newStorage := make([]element, 0, newMax)
+	newElements := make(map[interface{}]int, newMax)
 
 	// cannot use copy here despite the data race on element.used
 	for i := range self.storage {
-		elem := &self.storage[i]
+		elem := self.storage[i]
 		newStorage = append(newStorage, element{
 			key:   elem.key,
 			value: elem.value,
 			used:  atomic.LoadUint32(&elem.used),
 		})
-	}
-
-	newElements := make(map[interface{}]*element, newMax)
-	for i := range newStorage {
-		elem := &newStorage[i]
-		newElements[elem.key] = elem
+		newElements[elem.key] = i
 	}
 
 	self.elementsLock.Lock()
@@ -320,7 +315,7 @@ func (self *Cache) Reset() {
 	defer self.insertLock.Unlock()
 	oldSize := cap(self.storage)
 
-	newElements := make(map[interface{}]*element, oldSize)
+	newElements := make(map[interface{}]int, oldSize)
 	newStorage := make([]element, 0, oldSize)
 
 	self.elementsLock.Lock()

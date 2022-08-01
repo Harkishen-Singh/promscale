@@ -1,0 +1,245 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/timescale/promscale/pkg/clockcache
+BenchmarkInsertUnderCapacity/500-10         	11963192	       100.4 ns/op	  11963192 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12198505	        98.85 ns/op	  12198505 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12268590	        97.45 ns/op	  12268590 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12195844	        98.36 ns/op	  12195844 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12238892	        97.96 ns/op	  12238892 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12109952	        98.49 ns/op	  12109952 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12112300	        98.34 ns/op	  12112300 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12209426	       100.3 ns/op	  12209426 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	11972079	        98.66 ns/op	  11972079 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12307738	        99.01 ns/op	  12307738 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12132282	        99.06 ns/op	  12132282 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12211652	        98.07 ns/op	  12211652 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	11998084	        98.81 ns/op	  11998084 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	11981104	       101.5 ns/op	  11981104 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12092156	        98.38 ns/op	  12092156 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12066339	        99.13 ns/op	  12066339 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12017455	        98.66 ns/op	  12017455 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12089638	        96.95 ns/op	  12089638 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12188499	        98.50 ns/op	  12188499 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500-10         	12057468	        97.86 ns/op	  12057468 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12016216	        99.96 ns/op	  12016216 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12062276	       100.1 ns/op	  12062276 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12018482	        99.42 ns/op	  12018482 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12054616	       100.2 ns/op	  12054616 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12124946	        99.44 ns/op	  12124946 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12116071	        99.15 ns/op	  12116071 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	11989184	        99.13 ns/op	  11989184 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12044745	        99.04 ns/op	  12044745 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12080653	        99.30 ns/op	  12080653 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	11917051	        99.75 ns/op	  11917051 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12108517	        99.68 ns/op	  12108517 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12053320	       100.5 ns/op	  12053320 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12093106	       100.6 ns/op	  12093106 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12045637	        99.96 ns/op	  12045637 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12061003	        99.44 ns/op	  12061003 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12176786	        99.72 ns/op	  12176786 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12034598	       100.7 ns/op	  12034598 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	11876220	        99.44 ns/op	  11876220 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12051595	       100.4 ns/op	  12051595 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/5000-10        	12022666	        99.73 ns/op	  12022666 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11628456	        98.09 ns/op	  11628456 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12071816	        98.33 ns/op	  12071816 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12197900	        97.88 ns/op	  12197900 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12125697	        98.94 ns/op	  12125697 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12002010	        99.15 ns/op	  12002010 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11785700	        98.08 ns/op	  11785700 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12187983	        99.31 ns/op	  12187983 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12156488	       101.4 ns/op	  12156488 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12085306	       100.8 ns/op	  12085306 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11810461	        99.01 ns/op	  11810461 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12013033	        98.73 ns/op	  12013033 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12020895	        99.59 ns/op	  12020895 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11998364	        98.76 ns/op	  11998364 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12154005	        98.30 ns/op	  12154005 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11945052	        99.31 ns/op	  11945052 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11940768	       100.3 ns/op	  11940768 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	10796390	       106.1 ns/op	  10796390 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11567551	       102.8 ns/op	  11567551 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	11902546	       105.7 ns/op	  11902546 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/50000-10       	12017550	        98.10 ns/op	  12017550 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8334992	       140.4 ns/op	   8334992 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8362018	       129.1 ns/op	   8362018 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 7994772	       143.0 ns/op	   7994772 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 9238218	       129.6 ns/op	   9238218 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8324930	       129.1 ns/op	   8324930 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8086405	       144.4 ns/op	   8086405 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8268982	       147.4 ns/op	   8268982 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8590214	       129.1 ns/op	   8590214 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8908063	       129.2 ns/op	   8908063 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8898223	       129.7 ns/op	   8898223 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8322006	       129.1 ns/op	   8322006 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8239034	       128.8 ns/op	   8239034 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8161629	       134.7 ns/op	   8161629 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 7705308	       138.3 ns/op	   7705308 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 7991670	       132.7 ns/op	   7991670 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8372180	       135.8 ns/op	   8372180 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 6922059	       147.7 ns/op	   6922059 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8038129	       139.1 ns/op	   8038129 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 7305378	       143.0 ns/op	   7305378 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertUnderCapacity/500000-10      	 8048331	       136.3 ns/op	   8048331 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5873113	       207.0 ns/op	   5873113 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5879086	       205.7 ns/op	   5879086 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5920364	       205.6 ns/op	   5920364 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5936440	       205.5 ns/op	   5936440 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5902388	       204.0 ns/op	   5902388 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5900137	       202.9 ns/op	   5900137 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5879252	       206.1 ns/op	   5879252 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5934073	       204.8 ns/op	   5934073 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5895153	       205.2 ns/op	   5895153 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5889554	       207.1 ns/op	   5889554 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5855649	       206.3 ns/op	   5855649 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5876274	       203.5 ns/op	   5876274 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5906556	       204.4 ns/op	   5906556 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5876821	       205.2 ns/op	   5876821 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5854432	       205.2 ns/op	   5854432 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5839942	       204.3 ns/op	   5839942 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5861637	       206.7 ns/op	   5861637 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5863593	       202.5 ns/op	   5863593 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5915928	       204.6 ns/op	   5915928 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500-10          	 5871916	       202.6 ns/op	   5871916 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6507198	       182.6 ns/op	   6507198 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6508765	       186.0 ns/op	   6508765 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6460714	       184.5 ns/op	   6460714 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6431600	       184.9 ns/op	   6431600 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6496083	       184.7 ns/op	   6496083 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6472843	       183.9 ns/op	   6472843 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6418440	       183.8 ns/op	   6418440 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6499982	       184.3 ns/op	   6499982 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6496422	       183.1 ns/op	   6496422 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6461421	       184.9 ns/op	   6461421 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6493938	       183.9 ns/op	   6493938 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6488930	       184.3 ns/op	   6488930 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6503246	       185.2 ns/op	   6503246 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6497487	       185.3 ns/op	   6497487 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6468921	       184.9 ns/op	   6468921 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6496011	       184.1 ns/op	   6496011 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6445593	       184.5 ns/op	   6445593 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6491439	       184.7 ns/op	   6491439 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6416116	       184.1 ns/op	   6416116 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/5000-10         	 6476484	       183.1 ns/op	   6476484 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6809956	       176.1 ns/op	   6809956 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6802498	       175.4 ns/op	   6802498 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6777286	       176.6 ns/op	   6777286 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6808844	       179.0 ns/op	   6808844 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6424042	       177.3 ns/op	   6424042 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6734672	       175.3 ns/op	   6734672 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6817035	       175.2 ns/op	   6817035 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6779211	       176.6 ns/op	   6779211 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6769574	       175.6 ns/op	   6769574 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6801390	       176.7 ns/op	   6801390 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6786210	       176.4 ns/op	   6786210 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6692748	       179.9 ns/op	   6692748 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6775832	       178.2 ns/op	   6775832 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6629203	       179.3 ns/op	   6629203 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6714391	       179.7 ns/op	   6714391 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6644264	       180.4 ns/op	   6644264 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6796057	       177.3 ns/op	   6796057 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6622045	       181.8 ns/op	   6622045 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6782349	       176.7 ns/op	   6782349 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/50000-10        	 6779913	       179.2 ns/op	   6779913 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6078796	       175.4 ns/op	   6078796 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6375429	       176.6 ns/op	   6375429 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6357794	       178.6 ns/op	   6357794 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6629144	       177.7 ns/op	   6629144 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6637272	       179.0 ns/op	   6637272 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6628843	       192.6 ns/op	   6628843 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6600870	       197.8 ns/op	   6600870 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 5439801	       188.2 ns/op	   5439801 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 5459800	       187.0 ns/op	   5459800 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 5648894	       197.4 ns/op	   5648894 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6557722	       184.0 ns/op	   6557722 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6667627	       180.4 ns/op	   6667627 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6298926	       176.9 ns/op	   6298926 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6523598	       178.5 ns/op	   6523598 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 5284435	       197.6 ns/op	   5284435 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6081650	       179.8 ns/op	   6081650 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6586429	       182.3 ns/op	   6586429 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6428554	       185.3 ns/op	   6428554 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 5889219	       185.8 ns/op	   5889219 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertOverCapacity/500000-10       	 6418515	       177.9 ns/op	   6418515 inserts	         1.000 inserts/ops	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3263472	       364.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3428080	       359.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3324338	       364.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3256748	       357.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3405139	       353.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3322663	       365.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3291145	       362.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3285982	       361.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3318685	       362.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3285190	       366.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3329688	       359.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3454395	       347.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3456465	       348.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3440365	       382.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3366338	       374.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3283423	       359.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3342684	       361.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3432507	       349.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3313776	       362.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500-10            	 3289093	       364.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3741247	       329.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3546092	       341.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3675878	       334.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3718362	       342.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3685346	       325.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3483098	       329.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3565748	       337.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3692797	       325.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3674460	       336.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3540662	       394.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3138966	       336.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3647006	       326.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3654192	       329.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3715880	       329.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3666139	       339.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3594322	       340.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3642368	       337.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3729852	       373.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3261528	       346.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/5000-10           	 3443836	       328.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3789572	       321.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3763830	       330.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3345520	       345.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3877856	       308.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3424690	       300.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3981159	       347.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 4046553	       328.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3827505	       304.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 4205798	       306.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3316647	       339.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3297720	       314.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3744858	       322.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 4174112	       318.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3722810	       323.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3696702	       332.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3842386	       324.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3852786	       285.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 4096329	       321.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3960142	       315.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/50000-10          	 3545712	       285.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 5260083	       265.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4899805	       265.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4121538	       265.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4670704	       258.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4656045	       338.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4340041	       358.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4112575	       312.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4661130	       277.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 5035839	       263.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 3902449	       259.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4557646	       298.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 5182346	       267.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4102507	       308.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 5103224	       353.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4113368	       255.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4446438	       255.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 5585905	       266.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 3503511	       296.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4975909	       298.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkInsertConcurrent/500000-10         	 4856545	       316.0 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/timescale/promscale/pkg/clockcache	364.480s
