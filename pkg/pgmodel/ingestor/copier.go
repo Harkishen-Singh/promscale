@@ -111,6 +111,8 @@ func runCopier(conn pgxconn.PgxConn, in chan readRequest, sw *seriesWriter, elf 
 			numSeries = numSeries + copyRequest.data.batch.CountSeries()
 			batchSpan.End()
 		}
+		insertSpan.SetAttributes(attribute.String("has", "max_insert_stmt_per_txn"))
+		insertSpan.AddEvent(fmt.Sprintf("MaxInsertStmtPerTxn=>%d cap=>%d size=>%d filled_percent=>%f", metrics.MaxInsertStmtPerTxn, cap(requestBatch), len(requestBatch), (float32(len(requestBatch))/float32(cap(requestBatch)))*100))
 		insertSpan.End()
 
 		span.SetAttributes(attribute.Int("num_series", numSeries))
